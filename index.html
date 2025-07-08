@@ -85,6 +85,24 @@
     ul {
       padding-left: 20px;
     }
+    .coin {
+      width: 80px;
+      height: 80px;
+      margin: 20px auto;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffc107 40%, #ff9800);
+      box-shadow: 0 0 10px #ffb300;
+      display: none;
+      font-size: 2em;
+      text-align: center;
+      line-height: 80px;
+      animation: flip 1s ease-in-out;
+    }
+@keyframes flip {
+  0%   { transform: rotateY(0deg); }
+  100% { transform: rotateY(720deg); }
+  }
+
     .qr-code {
       text-align: center;
       margin-top: 50px;
@@ -155,6 +173,7 @@
     <div class="coin-toss">
       <button onclick="coinToss()">Toss Coin</button>
       <p id="toss-result"></p>
+      <div id="coin" class="coin"></div>
     </div>
 
     <h2 class="section-title">🚨 Pub Golf Consequences</h2>
@@ -198,12 +217,28 @@
   </div>
 
   <script>
-    function coinToss() {
-      const result = Math.random() < 0.5
-        ? "YOU'RE SAFE 😎"
-        : "PENALTY IF YOU PEE 💦 +1 stroke";
-      document.getElementById("toss-result").innerText = result;
-    }
-  </script>
+  function coinToss() {
+    const coin = document.getElementById("coin");
+    const resultText = document.getElementById("toss-result");
+    const isHeads = Math.random() < 0.5;
+
+    coin.style.display = "block";
+    coin.innerText = "🪙";
+    coin.style.animation = "none";
+    void coin.offsetWidth; // restart animation
+    coin.style.animation = "flip 1s ease-in-out";
+
+    setTimeout(() => {
+      if (isHeads) {
+        coin.innerText = "✅";
+        resultText.innerText = "YOU'RE SAFE 😎";
+      } else {
+        coin.innerText = "💀";
+        resultText.innerText = "PENALTY IF YOU PEE 💦 +1 stroke";
+      }
+    }, 1000);
+  }
+</script>
+
 </body>
 </html>
