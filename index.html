@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jyo's Pub Crawl Itinerary</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #121212;
+      color: #e0e0e0;
+    }
+    header {
+      background-color: #1f1f1f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .container {
+      padding: 20px;
+    }
+    h2.section-title {
+      font-size: 1.4em;
+      margin-top: 30px;
+      color: #f0f0f0;
+      border-bottom: 2px solid #444;
+      padding-bottom: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.95em;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #2a2a2a;
+    }
+    .coin-toss {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .coin-toss button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .coin-toss p {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    @media screen and (max-width: 600px) {
+      table, th, td {
+        font-size: 0.85em;
+      }
+      .coin-toss button {
+        width: 100%;
+      }
+    }
+    .qr-code {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .qr-code img {
+      max-width: 200px;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jyo's Pub Crawl Itinerary</h1>
+    <p>Bangalore Pub Golf - Walking Route</p>
+  </header>
+  <div class="container">
+
+    <h2 class="section-title">📍 Pub List & Drinks</h2>
+    <table>
+      <thead>
+        <tr><th>Hole</th><th>Pub</th><th>Drink</th><th>Par (Sips)</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Easy Tiger</td><td>Pint of beer + fries</td><td>6</td><td>Warm-up pub</td></tr>
+        <tr><td>2</td><td>Le Rock</td><td>Vodka or whisky shot</td><td>1</td><td>Basement shot</td></tr>
+        <tr><td>3</td><td>Pecos</td><td>500ml draught + popcorn</td><td>5</td><td>Chill draught</td></tr>
+        <tr><td>4</td><td>[Mystery Pub]</td><td>Bartender’s choice</td><td>4</td><td>Wildcard stop</td></tr>
+        <tr><td>5</td><td>We:Neighborhood</td><td>Sula Chenin Blanc (white wine)</td><td>4</td><td>Fancy mid-round</td></tr>
+        <tr><td>6</td><td>Plan B</td><td>Strong beer + wings</td><td>6</td><td>Food break</td></tr>
+        <tr><td>7</td><td>Chin Lung</td><td>90ml Old Monk + Chicken Dry Fry</td><td>3</td><td>Final boss 💀</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">💦 Water Hazard Rule</h2>
+    <ul>
+      <li>At every pub, do a coin toss (or dice roll).</li>
+      <li>If you lose and pee at that pub, you get +1 penalty stroke.</li>
+      <li>Double penalty at Chin Lung. No mercy.</li>
+    </ul>
+    <div class="coin-toss">
+      <button onclick="coinToss()">Toss Coin</button>
+      <p id="toss-result"></p>
+    </div>
+
+    <h2 class="section-title">🚨 Pub Golf Consequences</h2>
+    <table>
+      <thead>
+        <tr><th>Offense</th><th>Punishment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Go over par (too many sips)</td><td>+1 stroke per extra sip</td></tr>
+        <tr><td>Leave a drink unfinished</td><td>+3 penalty strokes</td></tr>
+        <tr><td>Puke anywhere</td><td>+3 strokes</td></tr>
+        <tr><td>Skip a hole / pub</td><td>+5 strokes</td></tr>
+        <tr><td>Spill your own drink</td><td>+2 strokes</td></tr>
+        <tr><td>Spill someone else’s drink</td><td>+2 strokes + buy them the same drink</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">🌟 Pub Golf Mini Challenges</h2>
+    <table>
+      <thead>
+        <tr><th>Challenge</th><th>Reward</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Take a group photo with a stranger</td><td>-2 strokes</td></tr>
+        <tr><td>Take a group photo with your own squad</td><td>-1 stroke</td></tr>
+        <tr><td>Give a dramatic speech or toast in any pub</td><td>-2 strokes</td></tr>
+        <tr><td>Speak in a fake accent for one full pub</td><td>-1 stroke</td></tr>
+        <tr><td>Convince a bartender to name a drink after Jyo</td><td>-3 strokes</td></tr>
+        <tr><td>Ask for and successfully get a stranger’s number</td><td>-2 strokes</td></tr>
+      </tbody>
+    </table>
+
+    <div class="qr-code">
+      <h2 class="section-title">🔗 Share This Page</h2>
+      <p>Scan this QR to view on phone or share with the group:</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://example.com/pubcrawl&size=200x200" alt="QR Code">
+    </div>
+
+  </div>
+
+  <script>
+    function coinToss() {
+      const result = Math.random() < 0.5
+        ? "YOU'RE SAFE 😎"
+        : "PENALTY IF YOU PEE 💦 +1 stroke";
+      document.getElementById("toss-result").innerText = result;
+    }
+  </script>
+</body>
+</html>
