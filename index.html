@@ -140,6 +140,34 @@
   <div class="container">
     <!-- Existing content stays here -->
 
+    <h2 class="section-title">📍 Itinerary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pub</th>
+          <th>Drink</th>
+          <th>Par (Sips)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Easy Tiger</td><td>Beer (Pint)</td><td>3</td></tr>
+        <tr><td>Easy Tiger</td><td>Shot</td><td>2</td></tr>
+        <tr><td>Le Rock</td><td>Whiskey + Water</td><td>3</td></tr>
+        <tr><td>Pecos</td><td>Classic Rum + Coke</td><td>3</td></tr>
+        <tr><td>Unnamed Pub</td><td>Surprise Drink</td><td>3</td></tr>
+        <tr><td>We:Neighbourhood</td><td>Sula Chenin Blanc</td><td>3</td></tr>
+        <tr><td>Plan B</td><td>Beer + Wings</td><td>4</td></tr>
+        <tr><td>Chin Lung</td><td>Any + Dinner</td><td>4</td></tr>
+      </tbody>
+    </table>
+
+    <div class="coin-toss">
+      <button onclick="coinToss()">Toss Coin</button>
+      <p id="toss-result"></p>
+      <div id="coin" class="coin"></div>
+      <p>Water Hazard Toss: If you lose the toss and pee at the pub, +1 stroke 💦</p>
+    </div>
+
     <h2 class="section-title">🎯 Shot or Not - Mini Game</h2>
     <div class="game-container">
       <div class="game-word" id="game-word">Press Start</div>
@@ -151,7 +179,26 @@
       <div id="game-result"></div>
     </div>
 
-    <!-- rest of the crawl itinerary below -->
+    <h2 class="section-title">🚫 Consequences</h2>
+    <ul>
+      <li>❌ Puke anywhere = +3 strokes</li>
+      <li>❌ Skip a hole = +2 strokes</li>
+      <li>❌ Spillage of your drink = +2 strokes</li>
+      <li>❌ Spill someone else's drink = +2 strokes + buy them the same drink</li>
+    </ul>
+
+    <h2 class="section-title">🎯 Challenges</h2>
+    <ul>
+      <li>📸 Group picture = -1 stroke</li>
+      <li>📸 Group picture with strangers = -2 strokes</li>
+      <li>🎤 Make a speech = -2 strokes</li>
+      <li>🍸 Convince bartender to name a drink after Jyo = -3 strokes</li>
+      <li>🎭 Speak in a fake accent at a pub = -1 stroke</li>
+      <li>📞 Ask and receive a stranger's number = -2 strokes</li>
+    </ul>
+
+    <h2 class="section-title">🗺️ Route Map</h2>
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1QzIpL3-5xcCLMb-2zgUAw2C1NYVf530&ehbc=2E312F" width="100%" height="480"></iframe>
   </div>
   <script>
     const drinks = [
