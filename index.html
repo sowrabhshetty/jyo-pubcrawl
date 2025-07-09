@@ -95,40 +95,12 @@
       line-height: 80px;
       animation: flip 1s ease-in-out;
     }
+    ul {
+      padding-left: 20px;
+    }
     @keyframes flip {
       0%   { transform: rotateY(0deg); }
       100% { transform: rotateY(720deg); }
-    }
-    .game-container {
-      text-align: center;
-      margin: 30px 0;
-      padding: 20px;
-      background-color: #1f1f1f;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(255, 0, 128, 0.2);
-    }
-    .game-word {
-      font-size: 2em;
-      margin: 20px 0;
-    }
-    .game-buttons button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 8px;
-      border: none;
-      background-color: #ff0080;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-    .game-buttons button:hover {
-      transform: scale(1.05);
-    }
-    #game-result {
-      font-size: 1.2em;
-      margin-top: 15px;
-      font-weight: bold;
     }
   </style>
 </head>
@@ -138,8 +110,6 @@
     <p>Bangalore Pub Golf - Walking Route</p>
   </header>
   <div class="container">
-    <!-- Existing content stays here -->
-
     <h2 class="section-title">📍 Itinerary</h2>
     <table>
       <thead>
@@ -168,102 +138,40 @@
       <p>Water Hazard Toss: If you lose the toss and pee at the pub, +1 stroke 💦</p>
     </div>
 
-    <h2 class="section-title">🎯 Shot or Not - Mini Game</h2>
-    <div class="game-container">
-      <div class="game-word" id="game-word">Press Start</div>
-      <div class="game-buttons">
-        <button onclick="checkAnswer(true)">Shot</button>
-        <button onclick="checkAnswer(false)">Not</button>
-        <button onclick="nextWord()">Start / Next</button>
-      </div>
-      <div id="game-result"></div>
-    </div>
-
     <h2 class="section-title">🚫 Consequences</h2>
-    <ul>
-      <li>❌ Puke anywhere = +3 strokes</li>
-      <li>❌ Skip a hole = +2 strokes</li>
-      <li>❌ Spillage of your drink = +2 strokes</li>
-      <li>❌ Spill someone else's drink = +2 strokes + buy them the same drink</li>
-    </ul>
+    <table>
+      <thead>
+        <tr><th>Offense</th><th>Punishment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Go over par (too many sips)</td><td>+1 stroke per extra sip</td></tr>
+        <tr><td>Leave a drink unfinished</td><td>+3 penalty strokes</td></tr>
+        <tr><td>Puke anywhere</td><td>+3 strokes</td></tr>
+        <tr><td>Skip a hole / pub</td><td>+5 strokes</td></tr>
+        <tr><td>Spill your own drink</td><td>+2 strokes</td></tr>
+        <tr><td>Spill someone else’s drink</td><td>+2 strokes + buy them the same drink</td></tr>
+      </tbody>
+    </table>
 
     <h2 class="section-title">🎯 Challenges</h2>
-    <ul>
-      <li>📸 Group picture = -1 stroke</li>
-      <li>📸 Group picture with strangers = -2 strokes</li>
-      <li>🎤 Make a speech = -2 strokes</li>
-      <li>🍸 Convince bartender to name a drink after Jyo = -3 strokes</li>
-      <li>🎭 Speak in a fake accent at a pub = -1 stroke</li>
-      <li>📞 Ask and receive a stranger's number = -2 strokes</li>
-    </ul>
+    <table>
+      <thead>
+        <tr><th>Challenge</th><th>Reward</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Take a group photo with a stranger</td><td>-2 strokes</td></tr>
+        <tr><td>Take a group photo with your own squad</td><td>-1 stroke</td></tr>
+        <tr><td>Give a dramatic speech or toast in any pub</td><td>-2 strokes</td></tr>
+        <tr><td>Speak in a fake accent for one full pub</td><td>-1 stroke</td></tr>
+        <tr><td>Convince a bartender to name a drink after Jyo</td><td>-3 strokes</td></tr>
+        <tr><td>Ask for and successfully get a stranger’s number</td><td>-2 strokes</td></tr>
+      </tbody>
+    </table>
 
     <h2 class="section-title">🗺️ Route Map</h2>
     <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1QzIpL3-5xcCLMb-2zgUAw2C1NYVf530&ehbc=2E312F" width="100%" height="480"></iframe>
   </div>
   <script>
-    const drinks = [
-      { word: "Kamikaze", real: true },
-      { word: "Flaming Dr. Pepper", real: true },
-      { word: "Silver Serpent", real: false },
-      { word: "B-52", real: true },
-      { word: "Tequila Sunrise Slam", real: false },
-      { word: "Jägerbomb", real: true },
-      { word: "Lemon Drop", real: true },
-      { word: "Crimson Tide", real: false },
-      { word: "Buttery Nipple", real: true },
-      { word: "Mind Eraser", real: true },
-      { word: "Purple Haze", real: true },
-      { word: "Ghost Whisper", real: false },
-      { word: "Slippery Nipple", real: true },
-      { word: "Fireball", real: true },
-      { word: "Midnight Howler", real: false },
-      { word: "Screaming Orgasm", real: true },
-      { word: "Red Snapper", real: true },
-      { word: "Viper’s Kiss", real: false },
-      { word: "Irish Car Bomb", real: true },
-      { word: "Blue Moon Blitz", real: false },
-      { word: "Woo Woo", real: true },
-      { word: "Starfall Shooter", real: false },
-      { word: "Tequila Slammer", real: true },
-      { word: "Liquid Cocaine", real: true },
-      { word: "Dragon’s Breath", real: false },
-      { word: "Blow Job", real: true },
-      { word: "Neon Nightmare", real: false },
-      { word: "Surfer on Acid", real: true },
-      { word: "Porn Star", real: true },
-      { word: "Shadow Sting", real: false },
-      { word: "Green Tea Shot", real: true },
-      { word: "Velvet Hammer", real: false },
-      { word: "Washington Apple", real: true },
-      { word: "Abyssal Drop", real: false },
-      { word: "Sex on the Beach", real: true },
-      { word: "Cactus Cooler", real: false },
-      { word: "White Russian", real: true },
-      { word: "Rattlesnake", real: true },
-      { word: "Phantom Flame", real: false },
-      { word: "Duck Fart", real: true },
-      { word: "Gilded Thorn", real: false },
-      { word: "Scooby Snack", real: true },
-      { word: "Frostbite Fury", real: false },
-      { word: "Pineapple Upside Down", real: true },
-      { word: "Blood Moon", real: false },
-      { word: "Three Wise Men", real: true },
-      { word: "Tidal Surge", real: false },
-      { word: "Oatmeal Cookie", real: true },
-      { word: "Iron Widow", real: false },
-      { word: "Alabama Slammer", real: true }
-    ];
-
-    let current = {};
-    function nextWord() {
-      current = drinks[Math.floor(Math.random() * drinks.length)];
-      document.getElementById("game-word").innerText = current.word;
-      document.getElementById("game-result").innerText = "";
-    }
-    function checkAnswer(userSaysShot) {
-      const result = userSaysShot === current.real ? "✅ Correct!" : "❌ Nope!";
-      document.getElementById("game-result").innerText = result;
-    }
     function coinToss() {
       const coin = document.getElementById("coin");
       const resultText = document.getElementById("toss-result");
@@ -284,5 +192,12 @@
       }, 1000);
     }
   </script>
+
+  <h2 class="section-title">📱 Share This Page</h2>
+<div style="text-align: center; margin-bottom: 40px;">
+  <p>Scan to view this itinerary on your phone:</p>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://sowrabhshetty.github.io/jyo-pubcrawl/&size=200x200" alt="QR Code">
+</div>
+
 </body>
 </html>
